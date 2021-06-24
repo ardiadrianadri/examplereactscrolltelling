@@ -54,29 +54,38 @@ function App() {
     updateSlides(imagesChanged);
   }
 
-  function renderSlides() {
+  function renderScrollMarks() {
     return slides.map((slide, index) =>(
       <Step data={slide.id}
         key={slide.id}
         >
-        <div className="slideContainer">
-          <h1> This is the step {index}</h1>
-          <img className={`imgScroll ${slide.active ? 'active': ''}`} src={slide.src} title={slide.title} alt={slide.alt}/>
-        </div>
+        <div className="slideMark"></div>
       </Step>
     ))
   }
 
+  function renderSlices() {
+    return slides.map((slide, index) => (
+      <div className={`slideContainer ${slide.active ? 'active': ''}`} key={index}>
+        <h1> This is the step {index}</h1>
+        <img className= "imgScroll" src={slide.src} title={slide.title} alt={slide.alt}/>
+      </div>
+    ));
+  }
+
   return (
     <div className="App">
-     <Scrollama onStepEnter={onScrollEvent}
-        offset={0.7}
-        progress
-        debug={true}
-        onStepProgress={onScrollProgress}
-        onStepExit={onStepExit}>
-       {renderSlides()}
-     </Scrollama>
+      {renderSlices()}
+      <div className="scrollMarkContainer">
+      <Scrollama onStepEnter={onScrollEvent}
+         offset={0.1}
+         progress
+         debug={true}
+         onStepProgress={onScrollProgress}
+         onStepExit={onStepExit}>
+        {renderScrollMarks()}
+      </Scrollama>
+      </div>
     </div>
   );
 }

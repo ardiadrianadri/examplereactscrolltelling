@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.slideMark{
+  width: 1px;
+  height: 22vh;
 }
 
 .slideContainer {
@@ -7,14 +15,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 50vh;
+  display: none;
+  opacity: 0;
+  height: 200vh;
+}
+
+.scrollMarkContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 
 .imgScroll {
   height: 100vh;
-  display: none;
-  opacity: 0;
 }
 
 @keyframes slideChange {
@@ -22,7 +37,7 @@
   100% { opacity: 1; }
 }
 
-.imgScroll.active {
+.slideContainer.active {
   display: block;
   opacity: 1;
   animation-name: slideChange;
